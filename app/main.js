@@ -3,6 +3,7 @@ const commandLineArgs = require('command-line-args')
 const getUsage = require('command-line-usage')
 const reltabSqlite = require('../src/reltab-sqlite')
 const csvimport = require('../src/csvimport')
+const parquetimport = require('../src/parquetimport')
 const log = require('electron-log')
 
 const setup = require('./setup')
@@ -134,7 +135,7 @@ const initMainAsync = async (options, targetPath, srcfile) => {
     }
 
     const noHeaderRow = options['no-headers'] || false
-    const md = await csvimport.fastImport(pathname, { noHeaderRow })
+    const md = await parquetimport.fastImport(pathname, { noHeaderRow })
     // const md = await csvimport.importSqlite(pathname, ',', { noHeaderRow })
 
     ti = csvimport.mkTableInfo(md)

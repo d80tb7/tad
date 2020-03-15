@@ -32,6 +32,7 @@
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "oneref": "0.3.2",
+    "parquetjs-lite": "^0.8.5",
     "react": "^16.5.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dnd": "^5.0.0",
