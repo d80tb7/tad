@@ -89,12 +89,12 @@ const importData = async (md: FileMetadata, cursor): Promise<FileMetadata> => {
 export const fastImport = async (pathname: string): Promise<FileMetadata> => {
     const importStart = process.hrtime()
     try {
-        let reader = await parquet.ParquetReader.openFile('/home/chrisma/code/parquet-js-play/trades.gz.parquet');
+        let reader = await parquet.ParquetReader.openFile(pathname);
         let cursor = reader.getCursor();
         let columnNames = cursor.schema.fieldList.map(x => x.name)
         let primitiveTypes = cursor.schema.fieldList.map(x => x.primitiveType)
         let columnTypes = primitiveTypes.map(x => getColType(x))
-        let table_name = genTableName('/home/chrisma/code/parquet-js-play/trades.gz.parquet')
+        let table_name = genTableName(pathname)
         const fileMetadata = {
             columnIds: columnNames,
             columnNames: columnNames,
